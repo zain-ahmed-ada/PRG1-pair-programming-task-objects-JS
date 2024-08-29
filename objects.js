@@ -25,20 +25,86 @@ const library = [
     }];
 
 
-function loanStatus(library) {
+function loanStatus(lib) {
+    for (const book of lib) {
+        const bookInfo = `${book.title} by ${book.author}`;
 
-  for (let i = 0; i < library.length; i++) 
-     {
-      let book = `'${library[i].title}' by '${library[i].author}'.`;
-      if (library[i].isLoaned) {
-        console.log('Out on loan: ' + book);
-      } else
-      {
-       console.log('On the shelf: ' + book);
-      }
-  }
-
+        if (book.isLoaned) {
+            console.log(`Out on loan: ${bookInfo}`);
+        } else {
+            console.log(`On the shelf: ${bookInfo}`);
+        }
+    }
 }
 
 
+function getBooksByAuthor(authorName) {
+    const booksByAuthor = [];
+  
+    for (const book of library) { // Use for...of loop for cleaner iteration
+      if (book.author === authorName) {
+        const bookStatus = book.isLoaned ? 'Out on loan' : 'On the shelf'; 
+        booksByAuthor.push(`${book.title} - ${bookStatus}`);
+      }
+    }
+  
+    return booksByAuthor;
+}
+  
+
+function searchByBookName(searchTerm) {
+    
+}
+  
+  
+function displayLoanTotals() {
+    
+}
+  
+  
+function alterBookStatus(bookTitle, newStatus) {
+    
+}
+  
+  
+function addNewBook(title, author, isLoaned) {
+    
+}
+  
+
+function removeBook(bookTitle) {
+    
+}
+  
+
+  
+// Personal testing function calls 
+  
+
+// Search for book by author 
+const authorName = 'Suzanne Collins';
+const booksStatus = getBooksByAuthor(authorName);
+
+console.log(`Books by ${authorName}:`);
+console.log(booksStatus);
+
+
+// See loan status of all books    
 loanStatus(library);
+
+
+
+
+
+// Leave this code here for automated testing
+
+module.exports = {
+    library,
+    loanStatus,
+    getBooksByAuthor,
+    searchByBookName,
+    displayLoanTotals,
+    alterBookStatus,
+    addNewBook,
+    removeBook
+  };
