@@ -35,7 +35,6 @@ function loanStatus(lib) {
     }
 }
 
-
 function getBooksByAuthor(authorName) {
     const booksByAuthor = [];
   
@@ -48,7 +47,6 @@ function getBooksByAuthor(authorName) {
   
     return booksByAuthor;
 }
-  
 
 function searchByBookName(searchTerm) {
     const bookByTitle = [];
@@ -75,9 +73,15 @@ function displayLoanTotals() {
 }
   
 function alterBookStatus(bookTitle, newStatus) {
-    
+    // Alter a book’s status (onloan/not on loan)
+    for (const book of library) {
+        if (book.isLoaned === true) {
+            book.isLoaned = false;
+        } else {
+            book.isLoaned = true;
+        }
+    }
 }
-  
   
 function addNewBook(title, author, isLoaned) {
     
