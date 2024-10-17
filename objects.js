@@ -84,10 +84,11 @@ function alterBookStatus(bookTitle, newStatus) {
 }
   
 function addNewBook(title, author, isLoaned) {
-    
+    // Add a new book to the library
+    let newBook = {title: title, author: author, isLoaned: isLoaned}
+    library.push(newBook)
 }
   
-
 function removeBook(bookTitle) {
     
 }
