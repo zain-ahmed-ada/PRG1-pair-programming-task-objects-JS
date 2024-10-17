@@ -6,7 +6,6 @@
 // Add a new book to the library
 // Remove a book from the library 
 
-
 const library = [ 
     {
         title: 'The Road Ahead',
@@ -23,7 +22,6 @@ const library = [
         author: 'Suzanne Collins',
         isLoaned: false
     }];
-
 
 function loanStatus(lib) {
     for (const book of lib) {
@@ -53,14 +51,28 @@ function getBooksByAuthor(authorName) {
   
 
 function searchByBookName(searchTerm) {
-    
+    const bookByTitle = [];
+    for (const book of library) {
+        if (book.title === searchTerm) {
+            bookByTitle.push({title: book.title, author: book.author});
+        }
+    }
+    return bookByTitle;
 }
-  
-  
+
 function displayLoanTotals() {
-    
+    let isLoanedCount = 0;
+    let notLoanedCount = 0;
+    for (const book of library) {
+         if (book.isLoaned === true) {
+             isLoanedCount++;
+        } else {
+             notLoanedCount++;
+        }
+    }
+    console.log(`Total books on loan: ${isLoanedCount}`);
+    console.log(`Total books not on loan: ${notLoanedCount}`);
 }
-  
   
 function alterBookStatus(bookTitle, newStatus) {
     
@@ -76,8 +88,6 @@ function removeBook(bookTitle) {
     
 }
   
-
-  
 // Personal testing function calls 
   
 
@@ -91,10 +101,6 @@ console.log(booksStatus);
 
 // See loan status of all books    
 loanStatus(library);
-
-
-
-
 
 // Leave this code here for automated testing
 
